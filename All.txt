@@ -1,0 +1,132 @@
+mysql> select *from gyanik;
++------+---------+----------+--------+-------------+------------+------+------------+
+| S_ID | FNAME   | SNAME    | GENDER | S_CITY      | S_Phone    | CGPA | Dob        |
++------+---------+----------+--------+-------------+------------+------+------------+
+| A    | Gyani   | Kumari   | 1      | Patna       | 8709643390 | 9.05 | 2001-10-16 |
+| B    | Richa   | Raj      | 1      | Gangtok     | 8707583390 | 6.00 | 2001-12-02 |
+| C    | Ekta    | Bhardvaj | 1      | Jamashedpur | 8707583390 | 8.50 | 2002-02-13 |
+| D    | Pragati | Ranjan   | 1      | Kolkata     | 9907583390 | 9.00 | 2001-10-01 |
+| E    | Shivani | Patidar  | 1      | Pune        | 8797583390 | 9.00 | 1999-12-29 |
++------+---------+----------+--------+-------------+------------+------+------------+
+5 rows in set (0.01 sec)
+mysql> SELECT  CGPA From Gyanik where DOB<='2000-01-01'AND CGPA>='8.5';
++------+
+| CGPA |
++------+
+| 9.00 |
++------+
+1 row in set (0.01 sec)
+
+mysql>  SELECT  CGPA From Gyanik where DOB<='2000-01-01' OR CGPA>='8.5';
++------+
+| CGPA |
++------+
+| 9.05 |
+| 8.50 |
+| 9.00 |
+| 9.00 |
++------+
+4 rows in set (0.00 sec)
+1 row in set (0.01 sec)
+
+mysql>  SELECT * From Gyanik where S_CITY IN("Kolkata","Delhi");
++------+---------+--------+--------+---------+------------+------+------------+
+| S_ID | FNAME   | SNAME  | GENDER | S_CITY  | S_Phone    | CGPA | Dob        |
++------+---------+--------+--------+---------+------------+------+------------+
+| D    | Pragati | Ranjan | 1      | Kolkata | 9907583390 | 9.00 | 2001-10-01 |
++------+---------+--------+--------+---------+------------+------+------------+
+1 row in set (0.01 sec)
+
+
+
+
+mysql> SELECT * From Gyanik where S_CITY NOT IN("Kolkata","Delhi");
++------+---------+----------+--------+-------------+------------+------+------------+
+| S_ID | FNAME   | SNAME    | GENDER | S_CITY      | S_Phone    | CGPA | Dob        |
++------+---------+----------+--------+-------------+------------+------+------------+
+| A    | Gyani   | Kumari   | 1      | Patna       | 8709643390 | 9.05 | 2001-10-16 |
+| B    | Richa   | Raj      | 1      | Gangtok     | 8707583390 | 6.00 | 2001-12-02 |
+| C    | Ekta    | Bhardvaj | 1      | Jamashedpur | 8707583390 | 8.50 | 2002-02-13 |
+| E    | Shivani | Patidar  | 1      | Pune        | 8797583390 | 9.00 | 1999-12-29 |
++------+---------+----------+--------+-------------+------------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * From Gyanik where CGPA BETWEEN 8.5 and 9.5;
++------+---------+----------+--------+-------------+------------+------+------------+
+| S_ID | FNAME   | SNAME    | GENDER | S_CITY      | S_Phone    | CGPA | Dob        |
++------+---------+----------+--------+-------------+------------+------+------------+
+| A    | Gyani   | Kumari   | 1      | Patna       | 8709643390 | 9.05 | 2001-10-16 |
+| C    | Ekta    | Bhardvaj | 1      | Jamashedpur | 8707583390 | 8.50 | 2002-02-13 |
+| D    | Pragati | Ranjan   | 1      | Kolkata     | 9907583390 | 9.00 | 2001-10-01 |
+| E    | Shivani | Patidar  | 1      | Pune        | 8797583390 | 9.00 | 1999-12-29 |
++------+---------+----------+--------+-------------+------------+------+------------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT * From Gyanik where FNAME LIKE "_a%";
+Empty set (0.01 sec)
+
+
+
+
+
+
+
+
+
+mysql> SELECT * From Gyanik order by CGPA;
++------+---------+----------+--------+-------------+------------+------+------------+
+| S_ID | FNAME   | SNAME    | GENDER | S_CITY      | S_Phone    | CGPA | Dob        |
++------+---------+----------+--------+-------------+------------+------+------------+
+| B    | Richa   | Raj      | 1      | Gangtok     | 8707583390 | 6.00 | 2001-12-02 |
+| C    | Ekta    | Bhardvaj | 1      | Jamashedpur | 8707583390 | 8.50 | 2002-02-13 |
+| D    | Pragati | Ranjan   | 1      | Kolkata     | 9907583390 | 9.00 | 2001-10-01 |
+| E    | Shivani | Patidar  | 1      | Pune        | 8797583390 | 9.00 | 1999-12-29 |
+| A    | Gyani   | Kumari   | 1      | Patna       | 8709643390 | 9.05 | 2001-10-16 |
++------+---------+----------+--------+-------------+------------+------+------------+
+5 rows in set (0.01 sec)
+
+mysql> delete from Gyanik where S_ID="C";
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from gyanik;
++------+---------+---------+--------+---------+------------+------+------------+
+| S_ID | FNAME   | SNAME   | GENDER | S_CITY  | S_Phone    | CGPA | Dob        |
++------+---------+---------+--------+---------+------------+------+------------+
+| A    | Gyani   | Kumari  | 1      | Patna   | 8709643390 | 9.05 | 2001-10-16 |
+| B    | Richa   | Raj     | 1      | Gangtok | 8707583390 | 6.00 | 2001-12-02 |
+| D    | Pragati | Ranjan  | 1      | Kolkata | 9907583390 | 9.00 | 2001-10-01 |
+| E    | Shivani | Patidar | 1      | Pune    | 8797583390 | 9.00 | 1999-12-29 |
++------+---------+---------+--------+---------+------------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update gyanik
+    -> set S_CITY="Kolkata" where S_ID="E";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT *FROM Gyanik;
++------+---------+---------+--------+---------+------------+------+------------+
+| S_ID | FNAME   | SNAME   | GENDER | S_CITY  | S_Phone    | CGPA | Dob        |
++------+---------+---------+--------+---------+------------+------+------------+
+| A    | Gyani   | Kumari  | 1      | Patna   | 8709643390 | 9.05 | 2001-10-16 |
+| B    | Richa   | Raj     | 1      | Gangtok | 8707583390 | 6.00 | 2001-12-02 |
+| D    | Pragati | Ranjan  | 1      | Kolkata | 9907583390 | 9.00 | 2001-10-01 |
+| E    | Shivani | Patidar | 1      | Kolkata | 8797583390 | 9.00 | 1999-12-29 |
++------+---------+---------+--------+---------+------------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table gyanik
+    -> add percent float(10,2);
+Query OK, 0 rows affected, 1 warning (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> select S_ID,FNAME,SNAME,GENDER,S_CITY,S_PHONE,CGPA*10 as percent from Gyanik;
++------+---------+---------+--------+---------+------------+---------+
+| S_ID | FNAME   | SNAME   | GENDER | S_CITY  | S_PHONE    | percent |
++------+---------+---------+--------+---------+------------+---------+
+| A    | Gyani   | Kumari  | 1      | Patna   | 8709643390 |   90.50 |
+| B    | Richa   | Raj     | 1      | Gangtok | 8707583390 |   60.00 |
+| D    | Pragati | Ranjan  | 1      | Kolkata | 9907583390 |   90.00 |
+| E    | Shivani | Patidar | 1      | Kolkata | 8797583390 |   90.00 |
++------+---------+---------+--------+---------+------------+---------+
+4 rows in set (0.01 sec)
